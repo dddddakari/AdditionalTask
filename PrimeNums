@@ -1,0 +1,67 @@
+using ADDTASK;
+using System.Net.Mail;
+using System.Runtime.CompilerServices;
+using System.Xml.Serialization;
+
+public AddTask
+{
+    private int var1=0;
+    private int var2 = 0;
+
+    public static void Main(string[] args)
+    {
+        AddTask obj = new AddTask();
+
+        obj.Takeinput();
+
+        obj.PrimeNums(obj.var1, obj.var2);
+    }
+
+    private int GetDifference(int n1, int n2)
+    {
+
+        if (n1 > n2)
+            return n1 - n2;
+        return n2 - n1;
+    }
+
+    private void Takeinput()
+    {
+        Console.WriteLine("Enter first number:");
+        var1 = Int32.Parse(Console.ReadLine());
+
+        Console.WriteLine("Enter Second Number: ");
+        var2 = Int32.Parse(Console.ReadLine());
+    }
+
+    private void PrimeNums(int start, int end)
+    {
+
+        Console.WriteLine("Prime numbers between " + start + " and " + end + ":");
+
+        for (int i=start;i<end;i++)
+        {
+            bool isPrime = IsPrime(i);  
+
+            if (isPrime == true)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+    }
+
+    private bool IsPrime(int target)
+    {
+        if (target == 1) return false;
+        for (int i = 2; i < target; i++)
+        {
+            if (target % i == 0)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
